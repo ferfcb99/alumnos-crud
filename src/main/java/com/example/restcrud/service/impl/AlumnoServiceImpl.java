@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
@@ -26,7 +27,13 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public AlumnoDto findById(Integer id) {
-        return null;
+        AlumnoDto alumnoDto = new AlumnoDto();
+        Optional<Alumno> alumnoOptional = this.alumnoRepository.findById(id);
+
+        if(alumnoOptional.isEmpty()){return null;}
+
+        Alumno alumno = alumnoOptional.get();
+        return AlumnoMapper.toDto(alumno);
     }
 
     @Override

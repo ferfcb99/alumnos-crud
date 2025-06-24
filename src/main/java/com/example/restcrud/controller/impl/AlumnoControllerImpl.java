@@ -6,10 +6,7 @@ import com.example.restcrud.service.AlumnoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,8 +26,10 @@ public class AlumnoControllerImpl implements AlumnoController {
     }
 
     @Override
-    public ResponseEntity<AlumnoDto> findById(Integer id) {
-        return null;
+    @GetMapping(value = "/get-by-id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AlumnoDto> findById(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(alumnoService.findById(id));
     }
 
     @Override
