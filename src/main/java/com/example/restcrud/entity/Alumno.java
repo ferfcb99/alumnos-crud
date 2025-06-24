@@ -9,23 +9,33 @@ import java.time.LocalDateTime;
 @Table(name="alumno")
 @Entity
 public class Alumno {
-    @Column(name = "id")
+
     @Id
-    private int id;
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "apellido_paterno")
     private String apellidoPaterno;
+
     @Column(name = "apellido_materno")
     private String apellidoMaterno;
+
     @Column(name = "edad")
     private int edad;
+
     @Column(name = "carrera")
     private String carrera;
-    @Column(name = "fecha_creacion")
-    private LocalDateTime fechaCreacion;
 
-    public Alumno(int id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String carrera, LocalDateTime fechaCreacion) {
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion; // fecha_llegada
+
+    public Alumno(Integer id, String nombre,
+                  String apellidoPaterno, String apellidoMaterno,
+                  int edad, String carrera,
+                  LocalDateTime fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -38,11 +48,11 @@ public class Alumno {
     public Alumno() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

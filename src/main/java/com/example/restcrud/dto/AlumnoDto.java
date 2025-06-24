@@ -2,14 +2,19 @@ package com.example.restcrud.dto;
 
 public class AlumnoDto {
 
-    private int id;
+    private Integer id;
+
     private String nombre;
+
     private String apellidoPaterno;
+
     private String apellidoMaterno;
+
     private int edad;
+
     private String carrera;
 
-    public AlumnoDto(int id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String carrera) {
+    public AlumnoDto(Integer id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String carrera) {
         this.id = id;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -21,7 +26,7 @@ public class AlumnoDto {
     public AlumnoDto() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
