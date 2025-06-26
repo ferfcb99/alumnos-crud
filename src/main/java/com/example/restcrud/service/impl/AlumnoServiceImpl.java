@@ -8,6 +8,7 @@ import com.example.restcrud.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,16 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public List<AlumnoDto> findAll() {
-        return List.of();
+        List<Alumno> alumnos = this.alumnoRepository.findAll();
+        AlumnoDto aDto;
+        List<AlumnoDto> alumnosDto = new ArrayList<>();
+
+        for (Alumno a : alumnos){
+            aDto = AlumnoMapper.toDto(a);
+            alumnosDto.add(aDto);
+        }
+
+        return alumnosDto;
     }
 
     @Override
@@ -50,8 +60,8 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public AlumnoDto deleteById(Integer id) {
-        return null;
+        AlumnoDto alumnoDto = findById(id);
+        this.alumnoRepository.deleteById(id);
+        return alumnoDto;
     }
-
-
 }

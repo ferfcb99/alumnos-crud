@@ -21,8 +21,10 @@ public class AlumnoControllerImpl implements AlumnoController {
     }
 
     @Override
+    @GetMapping(value = "/get-all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AlumnoDto>> getAll() {
-        return null;
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(alumnoService.findAll());
     }
 
     @Override
@@ -32,6 +34,7 @@ public class AlumnoControllerImpl implements AlumnoController {
                 .body(alumnoService.findById(id));
     }
 
+    //
     @Override
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AlumnoDto> save(@RequestBody AlumnoDto alumnoDto) {
@@ -45,7 +48,9 @@ public class AlumnoControllerImpl implements AlumnoController {
     }
 
     @Override
-    public ResponseEntity<AlumnoDto> delete(Integer id) {
-        return null;
+    @DeleteMapping(value = "/delete-by-id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AlumnoDto> delete(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                    .body(alumnoService.deleteById(id));
     }
 }
