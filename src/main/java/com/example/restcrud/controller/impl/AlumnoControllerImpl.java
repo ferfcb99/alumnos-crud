@@ -3,6 +3,7 @@ package com.example.restcrud.controller.impl;
 import com.example.restcrud.controller.AlumnoController;
 import com.example.restcrud.dto.AlumnoDto;
 import com.example.restcrud.service.AlumnoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class AlumnoControllerImpl implements AlumnoController {
     //
     @Override
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AlumnoDto> save(@RequestBody AlumnoDto alumnoDto) {
+    public ResponseEntity<AlumnoDto> save(@Valid @RequestBody AlumnoDto alumnoDto) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(alumnoService.save(alumnoDto));
     }

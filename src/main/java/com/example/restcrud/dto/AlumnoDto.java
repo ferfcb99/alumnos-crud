@@ -1,15 +1,32 @@
 package com.example.restcrud.dto;
 
+import jakarta.validation.constraints.*;
+
 public class AlumnoDto {
 
+    @NotNull
+    @Min(0)
+    @Max(999999999)
     private Integer id;
 
+    @NotNull
+    @Size(min = 3, max = 50)
+    @NotEmpty
     private String nombre;
 
+    @NotNull
+    @Size(min = 4, max = 50)
+    @NotEmpty
     private String apellidoPaterno;
 
+    @NotNull
+    @Size(min = 4, max = 50)
+    @NotEmpty
     private String apellidoMaterno;
 
+    @NotNull
+    @Min(0)
+    @Max(120)
     private int edad;
 
     private String carrera;

@@ -14,10 +14,10 @@ public class Alumno {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
-    @Column(name = "apellido_paterno")
+    @Column(name = "apellido_paterno", nullable = false)
     private String apellidoPaterno;
 
     @Column(name = "apellido_materno")
