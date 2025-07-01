@@ -2,6 +2,7 @@ package com.example.restcrud.controller.impl;
 
 import com.example.restcrud.controller.HandlerException;
 import com.example.restcrud.dto._responses.ResponseErrorApi;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,6 +17,16 @@ public class HandlerExceptionImpl implements HandlerException {
         ResponseErrorApi response = new ResponseErrorApi();
         response.setError(e.getMessage());
         response.setMessage("Arguments not valid for JPA Validation");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+
+    //DataIntegrityViolationException
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ResponseErrorApi> handleDataIntegrityViolationException(DataIntegrityViolationException e){
+        ResponseErrorApi response = new ResponseErrorApi();
+        response.setError(e.getMessage());
+        response.setMessage("Se violó alguna regla de la integridad de la base de datos");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
