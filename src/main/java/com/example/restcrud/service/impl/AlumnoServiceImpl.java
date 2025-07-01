@@ -40,10 +40,12 @@ public class AlumnoServiceImpl implements AlumnoService {
         AlumnoDto alumnoDto = new AlumnoDto();
         Optional<Alumno> alumnoOptional = this.alumnoRepository.findById(id);
 
-        if(alumnoOptional.isEmpty()){return null;}
+        if(alumnoOptional.isEmpty()){
+            return null; // null
+        }
 
         Alumno alumno = alumnoOptional.get();
-        return AlumnoMapper.toDto(alumno);
+        return AlumnoMapper.toDto(alumno); // null
     }
 
     @Override
