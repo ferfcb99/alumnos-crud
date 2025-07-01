@@ -2,6 +2,7 @@ package com.example.restcrud.service.impl;
 
 import com.example.restcrud.dto.AlumnoDto;
 import com.example.restcrud.entity.Alumno;
+import com.example.restcrud.exception.PersonalizedException;
 import com.example.restcrud.mapper.AlumnoMapper;
 import com.example.restcrud.repository.AlumnoRepository;
 import com.example.restcrud.service.AlumnoService;
@@ -50,9 +51,11 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public AlumnoDto save(AlumnoDto alumnoDto) {
-        Alumno alumno = AlumnoMapper.toEntity(alumnoDto);
-        alumno = this.alumnoRepository.save(alumno);
-        return AlumnoMapper.toDto(alumno);
+        Optional<Alumno> alumno = this.alumnoRepository.findById(alumnoDto.getId());
+        if(alumno.isPresent()){
+            throw new PersonalizedException("Error", "400", "Alumno ya registrado");
+        }
+        return null;
     }
 
     @Override

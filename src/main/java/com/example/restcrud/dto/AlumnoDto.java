@@ -29,6 +29,8 @@ public class AlumnoDto {
     @Max(120)
     private int edad;
 
+    // al menos 5 caracteres y como maximo 30
+    // no nulo
     private String carrera;
 
     public AlumnoDto(Integer id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String carrera) {
