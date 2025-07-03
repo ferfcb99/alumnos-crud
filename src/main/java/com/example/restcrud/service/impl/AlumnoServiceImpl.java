@@ -6,7 +6,6 @@ import com.example.restcrud.exception.PersonalizedException;
 import com.example.restcrud.mapper.AlumnoMapper;
 import com.example.restcrud.repository.AlumnoRepository;
 import com.example.restcrud.service.AlumnoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

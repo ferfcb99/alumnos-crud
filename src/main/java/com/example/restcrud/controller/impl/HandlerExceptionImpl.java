@@ -21,7 +21,6 @@ public class HandlerExceptionImpl implements HandlerException {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
-
     //DataIntegrityViolationException
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ResponseErrorApi> handleDataIntegrityViolationException(DataIntegrityViolationException e){
@@ -37,6 +36,14 @@ public class HandlerExceptionImpl implements HandlerException {
         response.setMessage(e.getMessage());
         response.setError(e.getDetails());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ResponseErrorApi> handleNotControlledException(Exception e){
+        ResponseErrorApi response = new ResponseErrorApi();
+        response.setError("xx50"); // 500
+        response.setMessage("Se ha ocurrido un error desconocido");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
 }
